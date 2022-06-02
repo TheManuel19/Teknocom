@@ -28,3 +28,10 @@ C:\Users\Grupo TeknoSoft\source\repos\Teknocom\Teknocom\bin\Debug\ExcelDataReade
 C:\Users\Grupo TeknoSoft\source\repos\Teknocom\Teknocom\bin\Debug\ExcelDataReader.pdb
 C:\Users\Grupo TeknoSoft\source\repos\Teknocom\Teknocom\bin\Debug\ExcelDataReader.xml
 C:\Users\Grupo TeknoSoft\source\repos\Teknocom\Teknocom\obj\Debug\Teknocom.vbproj.ResolveComReference.cache
+C:\Users\Grupo TeknoSoft\source\repos\Teknocom\Teknocom\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Grupo TeknoSoft\source\repos\Teknocom\Teknocom\bin\Debug\SpreadsheetLight.dll
+C:\Users\Grupo TeknoSoft\source\repos\Teknocom\Teknocom\bin\Debug\System.Drawing.Common.dll
+C:\Users\Grupo TeknoSoft\source\repos\Teknocom\Teknocom\bin\Debug\System.IO.Packaging.dll
+C:\Users\Grupo TeknoSoft\source\repos\Teknocom\Teknocom\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\Grupo TeknoSoft\source\repos\Teknocom\Teknocom\bin\Debug\SpreadsheetLight.xml
+C:\Users\Grupo TeknoSoft\source\repos\Teknocom\Teknocom\bin\Debug\System.IO.Packaging.xml

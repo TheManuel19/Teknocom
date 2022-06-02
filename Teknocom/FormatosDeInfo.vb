@@ -262,15 +262,14 @@ Public Class FormatosDeInfo
                 Dim folio As Integer = 0
                 fSiguienteFolio(concepto, serie, folio)
 
-
-
                 'Asigno bytes o inicializo los bytes que voy a inicializar
                 '----------------------------------------------------------------------------------------------------------
                 documento.aCodConcepto = New Byte(kLongCodigo - 1) {}
                 documento.aCodigoCteProv = New Byte(kLongCodigo - 1) {}
-                documento.aSerie = New Byte(kLongSeries - 1) {}
+                documento.aSerie = New Byte(kLongCodigo - 1) {}
                 documento.aMoneda = idMonedaCliente
                 documento.aFolio = folio
+
 
                 '----------------------------------------------------------------------------------------------------------
                 Dim codificador As New UTF8Encoding()
@@ -280,25 +279,39 @@ Public Class FormatosDeInfo
                 er = fAltaDocumento(idDocumento, documento)
                 funcionMessageError(er)
 
+
                 ' Damos de alta el movimiento para el documento
                 '----------------------------------------------------------------------------------------------------------
                 Dim movimiento As New tMovimiento
                 Dim precioUnitario As Double
                 precioUnitario = arreglo(31)
+                Dim codigoAlmacen As String = "1"
                 Dim unidades As Double
                 unidades = arreglo(25)
                 'claveDeTipoDeComprobandeDocumento = arreglo(1)
                 'LugarDeExpedicionDocumento = arreglo(3)
-                'ClaveRegimenFiscalDocumento = arreglo(4)
-                'ClaveFormaDePagoDocumento = arreglo(6)
+                'ClaveRegimenFiscalDocumento = arreglo(4) va en el cliente
+                'ClaveFormaDePagoDocumento = arreglo(6) va en el documento
                 'ClaveMetodoDePagoDocumento = arreglo(8)
                 movimiento.aCodProdSer = New Byte(kLongCodigo - 1) {}
                 movimiento.aPrecio = precioUnitario
                 movimiento.aUnidades = unidades
+                movimiento.aCodAlmacen = New Byte(kLongCodigo - 1) {}
 
                 codificador.GetBytes(claveDeProducto.Trim, 0, claveDeProducto.Length, movimiento.aCodProdSer, 0)
+                codificador.GetBytes(codigoAlmacen, 0, codigoAlmacen.Length, movimiento.aCodAlmacen, 0)
                 er = fAltaMovimiento(idDocumento, idMovimiento, movimiento)
                 funcionMessageError(er)
+
+
+                'Dim llave As New tLlaveDocto
+                'llave.aCodConcepto = New Byte(kLongCodigo - 1) {}
+                'llave.aSerie = New Byte(kLongSeries - 1) {}
+                'llave.aFolio = folio
+
+                'codificador.GetBytes(concepto.Trim, 0, concepto.Length, llave.aCodConcepto, 0)
+                'codificador.GetBytes(serie.Trim, 0, serie.Length, llave.aSerie, 0)
+                'fBuscaDocumento(llave)
 
                 vString1 = Nothing
                 arreglo = Nothing
@@ -332,20 +345,20 @@ Public Class FormatosDeInfo
     End Sub
 
     Private Sub CBXml_CheckedChanged(sender As Object, e As EventArgs) Handles CBXml.CheckedChanged
-        If CBXml.Checked = True Then
-            If OFDArchivosDeDatos.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-                '    MessageBox.Show("Funcion correcta")
-                '    Label1.Text = OpenFileDialog1.FileName
-                'rutaArchivo = OFDArchivosDeDatos.FileName
+        'If CBXml.Checked = True Then
+        '    If OFDArchivosDeDatos.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+        '        '    MessageBox.Show("Funcion correcta")
+        '        '    Label1.Text = OpenFileDialog1.FileName
+        '        'rutaArchivo = OFDArchivosDeDatos.FileName
 
-                '    Dim fileReader As String
-                '    fileReader = My.Computer.FileSystem.ReadAllText(rutaArchivo)
-                '    MsgBox(fileReader)
+        '        '    Dim fileReader As String
+        '        '    fileReader = My.Computer.FileSystem.ReadAllText(rutaArchivo)
+        '        '    MsgBox(fileReader)
 
-            ElseIf OFDArchivosDeDatos.ShowDialog() = System.Windows.Forms.DialogResult.Cancel Then
-                MessageBox.Show("Error")
-            End If
-        End If
+        '    ElseIf OFDArchivosDeDatos.ShowDialog() = System.Windows.Forms.DialogResult.Cancel Then
+        '        MessageBox.Show("Error")
+        '    End If
+        'End If
     End Sub
 
     Private Sub CBBd_CheckedChanged(sender As Object, e As EventArgs) Handles CBBd.CheckedChanged
