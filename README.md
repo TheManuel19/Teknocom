@@ -1,2 +1,0 @@
-# Teknocom
-# Teknocom
