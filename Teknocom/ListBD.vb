@@ -29,7 +29,6 @@ Public Class ListBD
         End With
         Me.Hide()
         FormatosDeInfo.Show()
-        'formularioInicio.Show()
     End Sub
 
     Private Sub BTNConectarDB_Click(sender As Object, e As EventArgs) Handles BTNConectarDB.Click
